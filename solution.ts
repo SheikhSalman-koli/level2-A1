@@ -91,3 +91,19 @@ function printBookDetails(input: Book){
 
 
 
+function getUniqueValues(input1: any, input2: any):any[] {
+
+    const makingTowInOne = [...input1, ...input2]
+    const withoutDuplicate: any= []
+
+    for(const i of makingTowInOne){
+        if(!withoutDuplicate.includes(i)){
+          withoutDuplicate.push(i)
+        }
+    }
+    
+    return withoutDuplicate
+}
+
+
+
