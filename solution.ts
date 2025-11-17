@@ -14,4 +14,16 @@ function formatValue(input: string | number | boolean): string | number | boolea
 
 
 
+function getLength(input: any): number{
+    if(typeof input === 'string'){
+        const splitedInput = input.split('')
+        return splitedInput.length
+    }else if(Array.isArray(input)){
+        return input.length
+    }
+    return input
+}
+
+
+
 
