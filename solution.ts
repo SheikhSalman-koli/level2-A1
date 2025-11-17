@@ -1,20 +1,20 @@
 
+type FormatInput = string | number | boolean;
 
-function formatValue(input: string | number | boolean): string | number | boolean {
+function formatValue(input: FormatInput):FormatInput {
     if (typeof input === 'string') {
         return input.toUpperCase()
     } else if (typeof input === 'number') {
         return input * 10
-    } else if (typeof input === 'boolean') {
+    } else {
         return !input
     }
 
-    return input
 }
 
 
 
-function getLength(input: any): number {
+function getLength(input: string | unknown[]): number {
     if (typeof input === 'string') {
         const splitedInput = input.split('')
         return splitedInput.length
@@ -50,11 +50,7 @@ type Books = {
 
 function filterByRating(input: Books[]): Books[] {
     const itemsWithHihgRating = input.filter(i => i.rating >= 4)
-    if (itemsWithHihgRating) {
-        return itemsWithHihgRating
-    }
-
-    return input
+    return itemsWithHihgRating
 }
 
 
@@ -68,11 +64,7 @@ type Users = {
 
 function filterActiveUsers(input: Users[]): Users[] {
     const activeUsers = input.filter(i => i.isActive)
-    if (activeUsers) {
-        return activeUsers
-    }
-
-    return input
+    return activeUsers
 }
 
 
@@ -84,18 +76,20 @@ interface Book {
     isAvailable: boolean
 }
 
-function printBookDetails(input: Book) {
+function printBookDetails(input: Book):void {
     const isAvailable = input.isAvailable ? 'Yes' : 'No'
     console.log(`Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${isAvailable}`);
 }
 
 
 
-function getUniqueValues(input1: any, input2: any): any[] {
+type InputType = string | number
 
-    const makingTowInOne = [...input1, ...input2]
+function getUniqueValues(input1: InputType[], input2: InputType[]): InputType[] {
 
-    const withoutDuplicate: any = []
+    const makingTowInOne: InputType[] = [...input1, ...input2]
+
+    const withoutDuplicate: InputType[] = []
 
     for (const i of makingTowInOne) {
         if (!withoutDuplicate.includes(i)) {
@@ -105,6 +99,7 @@ function getUniqueValues(input1: any, input2: any): any[] {
 
     return withoutDuplicate
 }
+
 
 
 type Products = {
@@ -128,6 +123,5 @@ function calculateTotalPrice(input: Products[]): number {
 
         return total + haveToPay
     }, 0)
-    
-}
 
+}
