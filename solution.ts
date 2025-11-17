@@ -14,11 +14,11 @@ function formatValue(input: string | number | boolean): string | number | boolea
 
 
 
-function getLength(input: any): number{
-    if(typeof input === 'string'){
+function getLength(input: any): number {
+    if (typeof input === 'string') {
         const splitedInput = input.split('')
         return splitedInput.length
-    }else if(Array.isArray(input)){
+    } else if (Array.isArray(input)) {
         return input.length
     }
 
@@ -31,12 +31,12 @@ class Person {
     name: string;
     age: number
 
-    constructor(name: string, age: number){
+    constructor(name: string, age: number) {
         this.name = name;
         this.age = age
     }
 
-    getDetails(){
+    getDetails() {
         return `'Name: ${this.name}, Age: ${this.age}'`
     }
 }
@@ -48,10 +48,10 @@ type Books = {
     rating: number
 }
 
-function filterByRating(input: Books[]):Books[] {
+function filterByRating(input: Books[]): Books[] {
     const itemsWithHihgRating = input.filter(i => i.rating >= 4)
-    if(itemsWithHihgRating){
-       return itemsWithHihgRating
+    if (itemsWithHihgRating) {
+        return itemsWithHihgRating
     }
 
     return input
@@ -66,12 +66,28 @@ type Users = {
     isActive: boolean
 }
 
-function filterActiveUsers(input: Users[]): Users[]{
-    const activeUsers = input.filter(i=> i.isActive)
-    if(activeUsers){
+function filterActiveUsers(input: Users[]): Users[] {
+    const activeUsers = input.filter(i => i.isActive)
+    if (activeUsers) {
         return activeUsers
     }
 
     return input
 }
+
+
+
+interface Book {
+    title: string;
+    author: string;
+    publishedYear: number;
+    isAvailable: boolean
+}
+
+function printBookDetails(input: Book){
+    const isAvailable = input.isAvailable ? 'Yes' : 'No'
+    console.log(`Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${isAvailable}`);
+}
+
+
 
