@@ -21,6 +21,7 @@ function getLength(input: any): number{
     }else if(Array.isArray(input)){
         return input.length
     }
+
     return input
 }
 
@@ -39,5 +40,22 @@ class Person {
         return `'Name: ${this.name}, Age: ${this.age}'`
     }
 }
+
+
+
+type Books = {
+    title: string;
+    rating: number
+}
+
+function filterByRating(input: Books[]):Books[] {
+    const aa = input.filter(i => i.rating >= 4)
+    if(aa){
+       return aa
+    }
+
+    return input
+}
+
 
 
