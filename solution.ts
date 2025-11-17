@@ -49,13 +49,29 @@ type Books = {
 }
 
 function filterByRating(input: Books[]):Books[] {
-    const aa = input.filter(i => i.rating >= 4)
-    if(aa){
-       return aa
+    const itemsWithHihgRating = input.filter(i => i.rating >= 4)
+    if(itemsWithHihgRating){
+       return itemsWithHihgRating
     }
 
     return input
 }
 
 
+
+type Users = {
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean
+}
+
+function filterActiveUsers(input: Users[]): Users[]{
+    const activeUsers = input.filter(i=> i.isActive)
+    if(activeUsers){
+        return activeUsers
+    }
+
+    return input
+}
 
