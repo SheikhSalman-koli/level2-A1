@@ -84,26 +84,50 @@ interface Book {
     isAvailable: boolean
 }
 
-function printBookDetails(input: Book){
+function printBookDetails(input: Book) {
     const isAvailable = input.isAvailable ? 'Yes' : 'No'
     console.log(`Title: ${input.title}, Author: ${input.author}, Published: ${input.publishedYear}, Available: ${isAvailable}`);
 }
 
 
 
-function getUniqueValues(input1: any, input2: any):any[] {
+function getUniqueValues(input1: any, input2: any): any[] {
 
     const makingTowInOne = [...input1, ...input2]
-    const withoutDuplicate: any= []
 
-    for(const i of makingTowInOne){
-        if(!withoutDuplicate.includes(i)){
-          withoutDuplicate.push(i)
+    const withoutDuplicate: any = []
+
+    for (const i of makingTowInOne) {
+        if (!withoutDuplicate.includes(i)) {
+            withoutDuplicate.push(i)
         }
     }
-    
+
     return withoutDuplicate
 }
 
 
+type Products = {
+    name: string;
+    price: number;
+    quantity: number;
+    discount?: number
+}
+
+function calculateTotalPrice(input: Products[]): number {
+
+    return input.reduce((total, item) => {
+
+        const pricePerItem = item.price * item?.quantity
+
+        const discountAmount = item.discount
+            ? pricePerItem * (item.discount / 100)
+            : 0
+
+        const haveToPay = pricePerItem - discountAmount
+
+        return total + haveToPay
+    }, 0)
+    
+}
 
